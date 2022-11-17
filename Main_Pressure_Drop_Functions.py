@@ -1,7 +1,7 @@
 # Author: Jiyansh Agarwal
 
 import numpy as _np
-from scipy.optimize import fsolve as _fsolve
+from scipy.optimize import fsolve as fsolve
 
 # Notes:
 # Straight Pipe = SP

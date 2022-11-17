@@ -1,5 +1,6 @@
 from Main_Pressure_Drop_Functions import *
 import numpy as np
+import fluids
 
 class NodeData:
     def __init__(self, deltaP, u, Re, f):
@@ -27,9 +28,10 @@ m_dot = 0.5     # kg/s
 fluid = IncompressibleFluid(rho, mu)
 
 fitting_A = np.pi * D**2 / 4
+K = fluids.fittings.K_branch_converging_Crane(D, D, m_dot/rho, m_dot/2/rho)
 
 tube_network.append(RoundTube(e, D, 1))
-tube_network.append(Fitting(0.05, fitting_A))
+tube_network.append(Fitting(K, fitting_A))
 tube_network.append(RoundTube(e, D, 0.5))
 tube_network.append(RoundTube(e, D, 1.5))
 tube_network.append(RoundTube(e, D, 3))
